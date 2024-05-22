@@ -168,7 +168,7 @@ class FairseqWav2Vec2(nn.Module):
         # we remove some modules that are unnecessary.
         self.remove_pretraining_modules()
 
-    def forward(self, wav, wav_lens):
+    def forward(self, wav, wav_lens=None):
         """Takes an input waveform and return its corresponding wav2vec encoding.
 
         Arguments
