@@ -188,7 +188,7 @@ class FairseqWav2Vec2(nn.Module):
         # If we freeze, we simply remove all grads and features from the graph.
         if self.freeze:
             with torch.no_grad():
-                return self.extract_features(wav, padding_mask)
+                return self.extract_features(wav)
 
         return self.extract_features(wav, padding_mask)
 
@@ -201,7 +201,7 @@ class FairseqWav2Vec2(nn.Module):
         # Extract wav2vec output
         out = self.model.extract_features(
             wav, padding_mask=padding_mask, mask=False
-        )["x"]
+        )[0]
 
         # We normalize the output if required
         if self.output_norm:
